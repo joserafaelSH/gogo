@@ -1,0 +1,23 @@
+CREATE TABLE IF NOT EXISTS fatura_beneficiaria (
+  id VARCHAR(36) PRIMARY KEY,
+  data_vencimento TIMESTAMPTZ NOT NULL,
+  valor_compensado DECIMAL(9, 2) NOT NULL,
+  kwh_compensado DECIMAL(9, 2) NOT NULL,
+  beneficiaria_id VARCHAR(36) NOT NULL,
+  data_ref TIMESTAMPTZ NOT NULL,
+  file_key VARCHAR(255) NOT NULL,
+  kwh_acumulado_fp DECIMAL(9, 2) NOT NULL,
+  kwh_acumulado_p DECIMAL(9, 2) NOT NULL,
+  kwh_billed DECIMAL(9, 2) NOT NULL,
+  kwh_consumido DECIMAL(9, 2) NOT NULL,
+  micro_mini_geracao BOOLEAN NOT NULL,
+  micro_mini_geracao_kwh DECIMAL(9, 2) DEFAULT 0 NOT NULL,
+  valor_energia DECIMAL(9, 2) NOT NULL,
+  uc VARCHAR(255) DEFAULT '' NOT NULL,
+  data_pagamento TIMESTAMPTZ,
+  energia_injetada_kwh DECIMAL(9, 2) DEFAULT 0 NOT NULL,
+  energia_injetada_reais DECIMAL(9, 2) DEFAULT 0 NOT NULL,
+  saldo_kwh DECIMAL(9, 2) DEFAULT 0 NOT NULL,
+  saldo_reais DECIMAL(9, 2) DEFAULT 0 NOT NULL,
+  consumo_minimo DECIMAL(9, 2) DEFAULT 0 NOT NULL
+);

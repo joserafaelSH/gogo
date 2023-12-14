@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  app:
+    image: golang:1.21
+    container_name: go-app
+    working_dir: /app
+    volumes:
+      - .:/go/src/
+    ports:
+      - "8080:8080"
+    command: go run main.go
+
+  postgres1:
+    image: postgres:13-alpine
+    restart: always
+    tty: true
+    volumes:
+      - .pg1data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=pg1
+    ports:
+      - "5434:5432"
+
+  postgres2:
+    image: postgres:13-alpine
+    restart: always
+    tty: true
+    volumes:
+      - .pg2data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=pg2
+    ports:
+      - "5433:5432"
